@@ -30,6 +30,21 @@ const SignUp = () => {
     navigate("/");
   };
 
+  const clickSignUpHandler = () => {
+    if (!nameInput) {
+      return alert("성함을 입력해주세요");
+    } else if (!emailInput) {
+      return alert("이메일을 입력해주세요");
+    } else if (!pwInput || !pwCheckInput) {
+      return alert("비밀번호를 입력해주세요");
+    } else if (pwInput !== pwCheckInput) {
+      return alert("비밀번호가 일치하지 않습니다");
+    } else {
+      //로그인 로직 완료 후 리스트페이지로 이동하게
+      return navigate("/");
+    }
+  };
+
   useEffect(() => {
     if (nameInput && emailInput && pwInput === pwCheckInput) {
       setButtonColor(true);
@@ -67,7 +82,9 @@ const SignUp = () => {
           onChange={passwordCheckHandler}
         />
       </Form>
-      <ConfirmButton state={buttonColor}>회원가입</ConfirmButton>
+      <ConfirmButton state={buttonColor} onClick={clickSignUpHandler}>
+        회원가입
+      </ConfirmButton>
       <InduceLogin>
         <AlreadyAccount>아이디가 있으신가요?</AlreadyAccount>
         <GotoSignIn onClick={onClickSignInHanlder}>로그인하기</GotoSignIn>

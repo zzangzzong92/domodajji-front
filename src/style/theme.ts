@@ -14,8 +14,15 @@ const inputStyle = css`
   background-color: ${colors.lightblue};
 `;
 
+const fontStyle = css`
+  font-family: "NanumSquare_ac";
+  font-style: normal;
+  font-weight: 700;
+`;
+
 const theme: DefaultTheme = {
   colors,
+  fontStyle,
   inputStyle,
 };
 

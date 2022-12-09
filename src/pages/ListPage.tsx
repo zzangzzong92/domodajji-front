@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ListPage = () => {
-  return <ListPageContainer>sdfasdfasdfsa</ListPageContainer>;
+  return <ListPageContainer></ListPageContainer>;
 };
 
 export default ListPage;
