@@ -14,6 +14,9 @@ const FindPw = () => {
   };
 
   const authenticationHandler = () => {
+    if (!EmailInput) {
+      return alert("가입하신 이메일 주소를 입력해주세요");
+    }
     //여기에 pass Api 로직 들어가야함
     alert("인증 준비중 입니다");
   };
