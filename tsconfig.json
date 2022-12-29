@@ -7,7 +7,7 @@
     "outDir": "./dist/",
 
     // enable strict null checks as a best practice
-    "strictNullChecks": true,
+    "strictNullChecks": false,
 
     // Search under node_modules for non-relative imports.
     "moduleResolution": "node",
@@ -68,7 +68,13 @@
       }
     ],
 
-    "types": ["react/next", "react-dom/next"],
+    "paths": {
+      "@assets/*": ["src/components/assets/images/*"],
+      "@atoms/*": ["src/components/atoms/*"],
+      "@molecules/*": ["src/components/molecules/*"],
+      "@organisms/*": ["src/components/organisms/*"],
+      "@pages/*": ["src/components/pages/*"]
+    },
 
     "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */,
 

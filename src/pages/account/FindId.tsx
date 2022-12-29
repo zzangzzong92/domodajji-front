@@ -2,39 +2,31 @@ import React from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 
-const FindPw = () => {
+const FindId = () => {
   const navigate = useNavigate();
 
   const signInHandler = () => {
     navigate("/");
   };
 
-  const findIdHandler = () => {
-    navigate("/findid");
+  const findPwHandler = () => {
+    navigate("/findpw");
   };
 
   const authenticationHandler = () => {
-    if (!EmailInput) {
-      return alert("가입하신 이메일 주소를 입력해주세요");
-    }
     //여기에 pass Api 로직 들어가야함
     alert("인증 준비중 입니다");
   };
 
   return (
-    <FindIdContainer>
-      <Title>비밀번호 찾기</Title>
-      <FindIdSpan>토모다찌의 비밀번호를 잊어버리셨나요?</FindIdSpan>
-      <EmailInput
-        type="email"
-        placeholder="이메일을 입력해주세요"
-
-        //onKeyPress={e => {
-      />
-
-      <ExplainFindPw>
-        토모다찌에 가입하신 이메일 주소를 입력해주세요
-      </ExplainFindPw>
+    <FindIdLayout>
+      <Title>아이디 찾기</Title>
+      <FindIdSpan>토모다찌의 아이디를 잊어버리셨나요?</FindIdSpan>
+      <FindIdIcon>🔒</FindIdIcon>
+      <ExplainFindId>
+        본인인증을 통해 <br />
+        아이디(이메일)을 찾을 수 있습니다
+      </ExplainFindId>
 
       <AuthenticationButton onClick={authenticationHandler}>
         인증하기
@@ -43,15 +35,15 @@ const FindPw = () => {
       <OtherButtonSection>
         <GotoSignIn onClick={signInHandler}>로그인</GotoSignIn>
         <Wall>|</Wall>
-        <GotoFindPw onClick={findIdHandler}>아이디 찾기</GotoFindPw>
+        <GotoFindPw onClick={findPwHandler}>비밀번호 찾기</GotoFindPw>
       </OtherButtonSection>
-    </FindIdContainer>
+    </FindIdLayout>
   );
 };
 
-export default FindPw;
+export default FindId;
 
-const FindIdContainer = styled.div`
+const FindIdLayout = styled.div`
   width: 568px;
   height: 488px;
   display: flex;
@@ -65,8 +57,18 @@ const FindIdContainer = styled.div`
 const Title = styled.span`
   font-size: 20px;
   font-weight: bold;
-  margin: 60px auto;
-  margin-bottom: 20px;
+  margin: 60px 0 20px 240px;
+`;
+
+const FindIdIcon = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 30px auto;
+  background-color: skyblue;
+  text-align: center;
+  line-height: 80px;
+  font-size: 30px;
 `;
 
 const FindIdSpan = styled.span`
@@ -74,23 +76,9 @@ const FindIdSpan = styled.span`
   font-size: 400;
 `;
 
-const EmailInput = styled.input`
-  width: 50%;
-  padding: 14px 16px;
-  margin: 30px auto;
-  background-color: #f5f7fa;
-  outline: none;
-  border: none;
-
-  :focus {
-    border-bottom: 2px solid blue;
-  }
-`;
-
-const ExplainFindPw = styled.span`
-  margin: 20px auto;
+const ExplainFindId = styled.span`
+  margin: 15px auto;
   text-align: center;
-  font-size: 12px;
 `;
 
 const AuthenticationButton = styled.div`

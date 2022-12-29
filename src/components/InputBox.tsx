@@ -10,7 +10,7 @@ interface InputBoxProps {
 
 const InputBox = ({ type, placeholder, name, handleInput }: InputBoxProps) => {
   return (
-    <InputBoxContainer>
+    <InputBoxLayout>
       <Content
         type={type}
         placeholder={placeholder}
@@ -18,13 +18,13 @@ const InputBox = ({ type, placeholder, name, handleInput }: InputBoxProps) => {
         required
         onChange={handleInput}
       />
-    </InputBoxContainer>
+    </InputBoxLayout>
   );
 };
 
 export default InputBox;
 
-const InputBoxContainer = styled.div`
+const InputBoxLayout = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;

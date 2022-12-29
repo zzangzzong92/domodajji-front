@@ -1,7 +1,8 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-// import InputBox from "../components/InputBox";
+// // import InputBox from "../components/InputBox";
+// import Google from "../assets/images/GoogleImg.svg";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -29,6 +30,15 @@ const SignIn = () => {
     navigate("/findpw");
   };
 
+  const SignInHandler = () => {
+    if (!emailInput) {
+      return alert("이메일을 입력해주세요");
+    } else if (!passwordInput) {
+      return alert("비밀번호를 입력해주세요");
+    }
+    //로그인 로직 추가하기
+  };
+
   useEffect(() => {
     if (emailInput && passwordInput) {
       setButtonColor(true);
@@ -38,7 +48,7 @@ const SignIn = () => {
   }, [emailInput, passwordInput]);
 
   return (
-    <SignInContainer>
+    <SignInLayout>
       <SignInSpanSection>
         <TomodajjiLogo>토모다찌</TomodajjiLogo>
         <TomodajjiIntro>우리끼리만 은밀하게</TomodajjiIntro>
@@ -61,7 +71,9 @@ const SignIn = () => {
             autoComplete="false"
             onChange={passwordInputHandler}
           />
-          <SignInButton state={buttonColor}>로그인</SignInButton>
+          <SignInButton state={buttonColor} onClick={SignInHandler}>
+            로그인
+          </SignInButton>
         </SignInFormSection>
       </Form>
 
@@ -76,17 +88,19 @@ const SignIn = () => {
       <Horizontal />
 
       <SnsSection>
-        <KakaoButton></KakaoButton>
-        <NaverButton></NaverButton>
-        <GoogleButton></GoogleButton>
+        {/* <KakaoButton></KakaoButton> */}
+        {/* <NaverButton></NaverButton> */}
+        {/* <GoogleButton> */}
+        {/* <GoogleImg><Google /></GoogleImg> */}
+        {/* </GoogleButton> */}
       </SnsSection>
-    </SignInContainer>
+    </SignInLayout>
   );
 };
 
 export default SignIn;
 
-const SignInContainer = styled.div`
+const SignInLayout = styled.div`
   width: 568px;
   height: 488px;
   margin: 156px auto;
@@ -141,7 +155,7 @@ const EmailInput = styled.input`
   border: none;
 
   :focus {
-    border-bottom: 2px solid blue;
+    border-bottom: 1px solid #526dee;
   }
 `;
 
@@ -153,7 +167,7 @@ const PasswordInput = styled.input`
   border: none;
 
   :focus {
-    border-bottom: 2px solid blue;
+    border-bottom: 1px solid #526dee;
   }
 `;
 
@@ -169,7 +183,7 @@ const SignInButton = styled.div<{ state: boolean }>`
   font-weight: 400;
   font-size: 14px;
   line-height: 36px;
-  background: ${(props) => (props.state ? "#f44016" : "#C8D1E0")};
+  background: ${(props) => (props.state ? "#526dee" : "#C8D1E0")};
   color: #ffffff;
   cursor: pointer;
 `;
@@ -205,29 +219,39 @@ const Horizontal = styled.hr`
 //소셜로그인섹션
 const SnsSection = styled.section`
   width: 300px;
+  height: 52px;
   display: flex;
   margin: 30px auto;
+  border-radius: 4px;
   justify-content: space-around;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 `;
 
-const KakaoButton = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-`;
-const NaverButton = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-`;
-const GoogleButton = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-`;
+// const KakaoButton = styled.div`
+//   width: 50px;
+//   height: 50px;
+//   border-radius: 50%;
+//   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+//     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+// `;
+// const NaverButton = styled.div`
+//   width: 50px;
+//   height: 50px;
+//   border-radius: 50%;
+//   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+//     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+// `;
+// const GoogleButton = styled.div`
+//   width: 50px;
+//   height: 50px;
+//   border-radius: 50%;
+//   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+//     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+// `;
+
+// const GoogleImg = styled.div`
+//   width: 30px;
+//   height: 30px;
+//   border-radius: 50%;
+// `;

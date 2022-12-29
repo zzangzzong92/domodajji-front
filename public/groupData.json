@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "groupName": "무슨이런계모임",
+    "people": 8,
+    "master": "마스터",
+    "createdAt": "2022.12.13"
+  },
+  {
+    "id": 2,
+    "groupName": "테스트1",
+    "people": 6,
+    "master": "마스터",
+    "createdAt": "2022.12.11"
+  },
+  {
+    "id": 3,
+    "groupName": "테슽2",
+    "people": 3,
+    "master": "마스터",
+    "createdAt": "2022.12.15"
+  },
+  {
+    "id": 4,
+    "groupName": "곗방",
+    "people": 11,
+    "master": "마스터",
+    "createdAt": "2022.12.21"
+  },
+  {
+    "id": 5,
+    "groupName": "스터디",
+    "people": 17,
+    "master": "마스터",
+    "createdAt": "2022.12.25"
+  },
+  {
+    "id": 6,
+    "groupName": "스터디",
+    "people": 6,
+    "master": "마스터",
+    "createdAt": "2022.12.25"
+  },
+  {
+    "id": 7,
+    "groupName": "스터디",
+    "people": 13,
+    "master": "마스터",
+    "createdAt": "2022.12.25"
+  }
+]

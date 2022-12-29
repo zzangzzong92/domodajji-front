@@ -46,7 +46,7 @@ const SignUp = () => {
   };
 
   useEffect(() => {
-    if (nameInput && emailInput && pwInput === pwCheckInput) {
+    if (nameInput && emailInput && pwInput && pwCheckInput) {
       setButtonColor(true);
     } else if (pwInput !== pwCheckInput) {
       setButtonColor(false);
@@ -54,7 +54,7 @@ const SignUp = () => {
   }, [nameInput, emailInput, pwInput, pwCheckInput]);
 
   return (
-    <SignUpContainer>
+    <SignUpLayout>
       <Title>Sign up</Title>
       <Form>
         <NameInput
@@ -89,13 +89,13 @@ const SignUp = () => {
         <AlreadyAccount>아이디가 있으신가요?</AlreadyAccount>
         <GotoSignIn onClick={onClickSignInHanlder}>로그인하기</GotoSignIn>
       </InduceLogin>
-    </SignUpContainer>
+    </SignUpLayout>
   );
 };
 
 export default SignUp;
 
-const SignUpContainer = styled.div`
+const SignUpLayout = styled.div`
   width: 412px;
   height: 506px;
   margin: 127px auto;
@@ -125,7 +125,7 @@ const NameInput = styled.input`
   border: none;
 
   :focus {
-    border-bottom: 2px solid blue;
+    border-bottom: 1px solid #526dee;
   }
 `;
 
@@ -138,7 +138,7 @@ const EmailInput = styled.input`
   border: none;
 
   :focus {
-    border-bottom: 2px solid blue;
+    border-bottom: 1px solid #526dee;
   }
 `;
 
@@ -151,7 +151,7 @@ const PasswordInput = styled.input`
   border: none;
 
   :focus {
-    border-bottom: 2px solid blue;
+    border-bottom: 1px solid #526dee;
   }
 `;
 
@@ -164,7 +164,7 @@ const PasswordCheckInput = styled.input`
   border: none;
 
   :focus {
-    border-bottom: 2px solid blue;
+    border-bottom: 1px solid #526dee;
   }
 `;
 
@@ -176,7 +176,7 @@ const ConfirmButton = styled.div<{ state: boolean }>`
   text-align: center;
   color: #ffffff;
   border-radius: 24px;
-  background-color: ${(props) => (props.state ? "blue" : "green")};
+  background-color: ${(props) => (props.state ? "#526dee" : "#C8D1E0")};
   cursor: pointer;
 `;
 

@@ -8,17 +8,17 @@ interface ButtonProps {
   onChange?: () => void;
 }
 
-const Button = ({ title, width, height, onChange }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({ title, width, height, onChange }) => {
   return (
-    <ButtonContainer width={width} height={height} onChange={onChange}>
+    <ButtonLayout width={width} height={height} onChange={onChange}>
       <Title>{title}</Title>
-    </ButtonContainer>
+    </ButtonLayout>
   );
 };
 
 export default Button;
 
-const ButtonContainer = styled.div<{ width: string; height: string }>`
+const ButtonLayout = styled.div<{ width: string; height: string }>`
   width: ${(props) => (props.width ? props.width : "0")};
   height: ${(props) => (props.height ? props.height : "0")};
   margin: 14px 0 0 18px;
