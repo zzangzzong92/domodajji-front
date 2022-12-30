@@ -1,8 +1,9 @@
+import axios from "axios";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 
-const SignUp = () => {
+const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const [nameInput, setNameInput] = useState<string>("");
   const [emailInput, setEmailInput] = useState<string>("");
@@ -30,17 +31,34 @@ const SignUp = () => {
     navigate("/");
   };
 
-  const clickSignUpHandler = () => {
+  const clickSignUpHandler = async () => {
     if (!nameInput) {
-      return alert("성함을 입력해주세요");
+      alert("성함을 입력해주세요");
     } else if (!emailInput) {
-      return alert("이메일을 입력해주세요");
+      alert("이메일을 입력해주세요");
     } else if (!pwInput || !pwCheckInput) {
-      return alert("비밀번호를 입력해주세요");
+      alert("비밀번호를 입력해주세요");
     } else if (pwInput !== pwCheckInput) {
-      return alert("비밀번호가 일치하지 않습니다");
+      alert("비밀번호가 일치하지 않습니다");
     } else {
-      //로그인 로직 완료 후 리스트페이지로 이동하게
+      const userData = {
+        name: nameInput,
+        email: emailInput,
+        password: pwInput,
+        password2: pwCheckInput,
+      };
+      await axios
+        .post("http://172.30.1.90:8000/users/signup", userData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          if (response.data.success) {
+            localStorage.setItem("token", response.data.token);
+          }
+        });
+      alert(`${nameInput} 님 회원가입이 완료되었습니다`);
       return navigate("/");
     }
   };

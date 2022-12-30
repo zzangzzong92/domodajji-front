@@ -12,6 +12,8 @@ const DashBoard: React.FC = () => {
     <DashBoardLayout>
       <DashboardNav />
       <DashBoardTopSection></DashBoardTopSection>
+
+      {/* Sub Routes */}
       <Routes>
         <Route path="reservation" element={<Reservation />} />
         <Route path="album" element={<Album />} />

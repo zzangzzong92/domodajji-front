@@ -1,8 +1,7 @@
+import axios from "axios";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-// // import InputBox from "../components/InputBox";
-// import Google from "../assets/images/GoogleImg.svg";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -30,13 +29,21 @@ const SignIn = () => {
     navigate("/findpw");
   };
 
-  const SignInHandler = () => {
-    if (!emailInput) {
-      return alert("이메일을 입력해주세요");
-    } else if (!passwordInput) {
-      return alert("비밀번호를 입력해주세요");
+  const SignInHandler = async () => {
+    try {
+      if (!emailInput) {
+        return alert("이메일을 입력해주세요");
+      } else if (!passwordInput) {
+        return alert("비밀번호를 입력해주세요");
+      }
+      const response = await axios.post("loginurl", {
+        email: emailInput,
+        password: passwordInput,
+      });
+      console.log("리스폰스", response);
+    } catch (error) {
+      console.log("로그인에 실패하였습니다.", error);
     }
-    //로그인 로직 추가하기
   };
 
   useEffect(() => {
@@ -88,11 +95,7 @@ const SignIn = () => {
       <Horizontal />
 
       <SnsSection>
-        {/* <KakaoButton></KakaoButton> */}
-        {/* <NaverButton></NaverButton> */}
-        {/* <GoogleButton> */}
-        {/* <GoogleImg><Google /></GoogleImg> */}
-        {/* </GoogleButton> */}
+        <KakaoLoginButton></KakaoLoginButton>
       </SnsSection>
     </SignInLayout>
   );
@@ -228,30 +231,4 @@ const SnsSection = styled.section`
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 `;
 
-// const KakaoButton = styled.div`
-//   width: 50px;
-//   height: 50px;
-//   border-radius: 50%;
-//   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-//     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-// `;
-// const NaverButton = styled.div`
-//   width: 50px;
-//   height: 50px;
-//   border-radius: 50%;
-//   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-//     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-// `;
-// const GoogleButton = styled.div`
-//   width: 50px;
-//   height: 50px;
-//   border-radius: 50%;
-//   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-//     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-// `;
-
-// const GoogleImg = styled.div`
-//   width: 30px;
-//   height: 30px;
-//   border-radius: 50%;
-// `;
+const KakaoLoginButton = styled.button``;
