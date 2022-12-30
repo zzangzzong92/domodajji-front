@@ -3,13 +3,14 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 
-const SignUp: React.FC = () => {
+const SignUp = () => {
   const navigate = useNavigate();
   const [nameInput, setNameInput] = useState<string>("");
   const [emailInput, setEmailInput] = useState<string>("");
   const [pwInput, setPwInput] = useState<string>("");
   const [pwCheckInput, setPwCheckInput] = useState<string>("");
   const [buttonColor, setButtonColor] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState({});
 
   const nameHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setNameInput(e.target.value);
@@ -41,25 +42,31 @@ const SignUp: React.FC = () => {
     } else if (pwInput !== pwCheckInput) {
       alert("비밀번호가 일치하지 않습니다");
     } else {
-      const userData = {
-        name: nameInput,
-        email: emailInput,
-        password: pwInput,
-        password2: pwCheckInput,
-      };
-      await axios
-        .post("http://172.30.1.90:8000/users/signup", userData, {
-          headers: {
-            "Content-Type": "application/json",
+      try {
+        const signUpResponse = await axios.post(
+          "http://172.30.1.90:8000/users/signup",
+          {
+            email: emailInput,
+            password: pwInput,
+            password2: pwCheckInput,
+            name: nameInput,
           },
-        })
-        .then((response) => {
-          if (response.data.success) {
-            localStorage.setItem("token", response.data.token);
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
           }
-        });
-      alert(`${nameInput} 님 회원가입이 완료되었습니다`);
-      return navigate("/");
+        );
+        if (signUpResponse.status === 201) {
+          alert(`${nameInput} 님 회원가입이 완료되었습니다`);
+          navigate("/");
+        }
+        // if (!signUpResponse) {
+        //   throw new Error(signUpResponse.statusText);
+        // }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 

@@ -30,17 +30,20 @@ const SignIn = () => {
   };
 
   const SignInHandler = async () => {
+    if (!emailInput) {
+      return alert("이메일을 입력해주세요");
+    } else if (!passwordInput) {
+      return alert("비밀번호를 입력해주세요");
+    }
     try {
-      if (!emailInput) {
-        return alert("이메일을 입력해주세요");
-      } else if (!passwordInput) {
-        return alert("비밀번호를 입력해주세요");
-      }
       const response = await axios.post("loginurl", {
         email: emailInput,
         password: passwordInput,
       });
-      console.log("리스폰스", response);
+      if (response.status === 200) {
+        localStorage.setItem("access_token", response.data.access_token);
+        navigate("/list");
+      }
     } catch (error) {
       console.log("로그인에 실패하였습니다.", error);
     }
