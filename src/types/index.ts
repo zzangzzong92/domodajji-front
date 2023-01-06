@@ -1,3 +1,10 @@
+export interface User {
+  id: number;
+  email: string;
+  password: string;
+  isAdmin?: boolean;
+}
+
 export interface GroupInfo {
   groups: any;
   id: number;

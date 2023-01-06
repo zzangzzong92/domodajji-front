@@ -7,9 +7,6 @@ import ListPage from "./pages/ListPage";
 import SignIn from "./pages/account/SignIn";
 import SignUp from "./pages/account/SignUp";
 import DashBoard from "pages/DashBoard";
-// import Reservation from "pages/dashboard/Reservation";
-// import AccountBook from "pages/dashboard/AccountBook";
-// import Setting from "pages/dashboard/Setting";
 
 const App = () => {
   return (
@@ -21,13 +18,7 @@ const App = () => {
         <Route path="/findpw" element={<FindPw />} />
         <Route path="/list" element={<ListPage />} />
         <Route path="/card" element={<GroupCard grouInfo={undefined} />} />
-
-        {/* <Route path="reservation" element={<Reservation />} />
-        <Route path="album" element={<Reservation />} />
-        <Route path="reservation" element={<Reservation />} />
-        <Route path="accountbook" element={<AccountBook />} />
-        <Route path="setting" element={<Setting />} /> */}
-        <Route path="group/:id/*" element={<DashBoard />} />
+        <Route path="/group/:id/*" element={<DashBoard />} />
       </Routes>
     </BrowserRouter>
   );

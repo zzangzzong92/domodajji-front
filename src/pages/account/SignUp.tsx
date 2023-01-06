@@ -10,8 +10,8 @@ const SignUp = () => {
   const [pwInput, setPwInput] = useState<string>("");
   const [pwCheckInput, setPwCheckInput] = useState<string>("");
   const [buttonColor, setButtonColor] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState({});
 
+  //인풋 핸들러
   const nameHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setNameInput(e.target.value);
   };
@@ -28,6 +28,7 @@ const SignUp = () => {
     setPwCheckInput(e.target.value);
   };
 
+  // 클릭핸들러
   const onClickSignInHanlder = () => {
     navigate("/");
   };
@@ -61,9 +62,6 @@ const SignUp = () => {
           alert(`${nameInput} 님 회원가입이 완료되었습니다`);
           navigate("/");
         }
-        // if (!signUpResponse) {
-        //   throw new Error(signUpResponse.statusText);
-        // }
       } catch (error) {
         console.log(error);
       }

@@ -1,64 +1,78 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import { useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router";
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+
+// interface NavbarProps {
+//   navContent: "reservation" | "album" | "cacl" | "setting";
+// }
 
 const DashboardNav: React.FC = () => {
-  const param = useParams();
-  console.log(param);
+  // const param = useParams();
   const navigate = useNavigate();
   const [openMypage, setOpenMypage] = useState<boolean>(false);
+  // const [selectedMenu, setSelectedMenu] = useState<string>("");
+
+  // const MenuLink = styled(Link)`
+  //   background-color: ${(props) => (props.current ? "#526dee" : "")};
+  // `;
 
   const myPageHandler = () => {
     setOpenMypage(!openMypage);
   };
 
   const clickHome = () => {
-    navigate("group/:id");
+    navigate("home");
+  };
+
+  const clickReservation = () => {
+    navigate("reservation");
+    // setSelectedMenu("reservation");
+  };
+
+  const clickAlbum = () => {
+    navigate("album");
+    // setSelectedMenu("album");
+  };
+
+  const clickSetting = () => {
+    navigate("setting");
+    // setSelectedMenu("setting");
   };
 
   return (
     <NavbarLayout>
-      <NavTop>
-        <Logo onClick={clickHome}>들어온 그룹</Logo>
+      <NavWrapper>
+        <Logo>들어온 그룹</Logo>
         <MenuBox>
           <MenuWrapper>
-            <Link to={"reservation"}>
-              <MenuItem id="home">
-                <MenuIconBox>{/* <Task /> */}</MenuIconBox>
-                <MenuName>약속</MenuName>
-              </MenuItem>
-            </Link>
+            <MenuItem id="home" onClick={clickHome}>
+              <MenuIconBox>{/* <Task /> */}</MenuIconBox>
+              <MenuName>홈</MenuName>
+            </MenuItem>
 
-            <Link to={"album"}>
-              <MenuItem id="order">
-                <MenuIconBox>{/* <Task /> */}</MenuIconBox>
-                <MenuName>앨범</MenuName>
-              </MenuItem>
-            </Link>
+            <MenuItem id="reservation" onClick={clickReservation}>
+              <MenuIconBox>{/* <Task /> */}</MenuIconBox>
+              <MenuName>약속</MenuName>
+            </MenuItem>
 
-            <Link to={"accountbook"}>
-              <MenuItem id="calc">
-                <MenuIconBox>{/* <Task /> */}</MenuIconBox>
-                <MenuName>장부</MenuName>
-              </MenuItem>
-            </Link>
+            <MenuItem id="album" onClick={clickAlbum}>
+              <MenuIconBox></MenuIconBox>
+              <MenuName>앨범</MenuName>
+            </MenuItem>
 
-            <Link to={"setting"}>
-              <MenuItem id="calc">
-                <MenuIconBox>{/* <Task /> */}</MenuIconBox>
-                <MenuName>설정</MenuName>
-              </MenuItem>
-            </Link>
+            <MenuItem id="setting" onClick={clickSetting}>
+              <MenuIconBox></MenuIconBox>
+              <MenuName>설정</MenuName>
+            </MenuItem>
           </MenuWrapper>
         </MenuBox>
         <MyPageSection onClick={myPageHandler}>
           <UserName>짱쫑</UserName>
-          <MyPageIconBox>{/* <MyPageIcon /> */}</MyPageIconBox>
+          <MyPageIconBox></MyPageIconBox>
         </MyPageSection>
-      </NavTop>
+        {openMypage && <div>마이페이지</div>}
+      </NavWrapper>
     </NavbarLayout>
   );
 };
@@ -72,11 +86,10 @@ const NavbarLayout = styled.div`
   position: relative;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px;
   background-color: #ffff;
 `;
 
-const NavTop = styled.section`
+const NavWrapper = styled.section`
   width: 100%;
   min-width: 768px;
   max-width: 1280px;
@@ -87,7 +100,8 @@ const NavTop = styled.section`
 
 const Logo = styled.div`
   height: 48px;
-
+  line-height: 48px;
+  font-weight: bold;
   cursor: pointer;
 `;
 
@@ -120,7 +134,13 @@ const MenuItem = styled.li`
   justify-content: center;
   border-radius: 4px;
   :hover {
-    background-color: rgba(244, 64, 22, 0.1);
+    background-color: #526dee;
+    color: #fff;
+  }
+
+  &.active {
+    background-color: #526dee;
+    color: #fff;
   }
 `;
 

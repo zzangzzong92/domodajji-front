@@ -65,7 +65,7 @@ const FindIdIcon = styled.div`
   height: 80px;
   border-radius: 50%;
   margin: 30px auto;
-  background-color: skyblue;
+  background-color: #526dee;
   text-align: center;
   line-height: 80px;
   font-size: 30px;
@@ -92,7 +92,7 @@ const AuthenticationButton = styled.div`
   text-align: center;
   line-height: 36px;
   color: #ffffff;
-  background: skyblue;
+  background: #526dee;
   cursor: pointer;
 `;
 

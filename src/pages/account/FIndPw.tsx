@@ -104,7 +104,7 @@ const AuthenticationButton = styled.div`
   text-align: center;
   line-height: 36px;
   color: #ffffff;
-  background: skyblue;
+  background: #526dee;
   cursor: pointer;
 `;
 
